@@ -4,7 +4,7 @@
 from flask import Flask, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
-from os import getenv
+from os import environ
 
 
 app = Flask(__name__)
