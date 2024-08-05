@@ -1,19 +1,16 @@
 #!/usr/bin/python3
-
-""" Routing blueprint object to check app status """
-
-from flask import jsonify
-from api.v1.views import app_views
-from models import storage
+""" Index, routes and methods """
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+from api.v1.views import app_views
+from models import storage
+from flask import jsonify
 
 
-# Routes to a flask blueprint
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def get_status():
     """ Returns json dict response of app status """
@@ -27,9 +24,7 @@ def objs_num():
     names = ["amenities", "cities", "places", "reviews", "states", "users"]
 
     num_objs = {}
-
     for i in range(len(classes)):
-        count = storage.count(classes[i])
-        num_objs[names[i]] = count
+        num_objs[names[i]] = storage.count(classes[i])
 
     return jsonify(num_objs)

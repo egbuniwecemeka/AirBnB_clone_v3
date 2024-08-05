@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-
-""" A Blueprint to a Flask instance """
-
+""" A Blueprint to a Flask API instance """
 from flask import Blueprint
-# from api.v1.views.index import get_status, objs_num
 
-app_views = Blueprint('app_views', __name__, url_prefix="/api/v1")
+app_views = Blueprint('app_views', __name__, url_prefix='/api/v1')
 
 from api.v1.views.index import *
+from api.v1.views.amenities import *
+from api.v1.views.places_amenities import *
+from api.v1.views.states import *
+from api.v1.views.places import *
+from api.v1.views.places_review import *
+from api.v1.views.cities import *
+from api.v1.views.users import *
