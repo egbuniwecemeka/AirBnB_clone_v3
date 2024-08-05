@@ -14,8 +14,6 @@ app.register_blueprint(app_views)
 @app.teardown_appcontext
 def close_storage(error):
     """ close storage on error and after every request"""
-    if exception:
-        print(f'An error occurred: {exception}')
     storage.close()
 
 
