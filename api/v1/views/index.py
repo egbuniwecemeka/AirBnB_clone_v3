@@ -26,9 +26,6 @@ def objs_num():
     classes = [Amenity, City, Place, Review, State, User]
     names = ["amenities", "cities", "places", "reviews", "states", "users"]
 
-    num_objs = {}
+    num_objs = {name: storage.count(cls) for cls, name in zip(classes, names)}
 
-    for i in range(len(classes)):
-        num_objs[names[i]] = storage.count(classes[i])
-
-    return jsonify(num_objs)
+    `return jsonify(num_objs)
