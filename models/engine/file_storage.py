@@ -85,12 +85,12 @@ class FileStorage:
         """
             Returns the objects count of a class or all classes
         """
-        objs = 0
+        obj_count = 0
         if cls:
             if cls in classes.keys() or cls in classes.values():
-                objs = len(self.all(cls))
+                obj_count = len(self.all(cls))
             else:
-                return objs
+                return obj_count
         if not cls:
-            obj = len(self.all())
-        return objs
+            obj_count = len(self.all())
+        return obj_count

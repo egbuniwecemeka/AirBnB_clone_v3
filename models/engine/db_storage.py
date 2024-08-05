@@ -89,12 +89,14 @@ class DBStorage:
 
     def count(self, cls=None):
         """
-            Returns objects in a storage matching a class,else return all objs
+            Returns the count of  objects in storage matching a class
         """
-        objs = 0
-        if cls:
-            if cls in classes.keys() or cls in classes.values():
-                objs = len(self.all(cls))
+        objs_class = classes.values()
+
         if not cls:
-            obj = len(self.all())
-        return objs
+            count = 0
+            for obj_class in objs_class:
+                count += len(models.storage.all(obj_class).values())
+        else:
+            count = len(models.storage.all(cls).values())
+        return count

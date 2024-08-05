@@ -30,7 +30,6 @@ def objs_num():
 
     for i in range(len(classes)):
         count = storage.count(classes[i])
-        print(f"Count for {names[i]}: {count}")
         num_objs[names[i]] = count
 
     return jsonify(num_objs)
