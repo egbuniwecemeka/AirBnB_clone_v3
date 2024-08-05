@@ -7,6 +7,7 @@ from api.v1.views import app_views
 # Create a Flask instance
 app = Flask(__name__)
 
+
 def main_app():
     """ Registering blueprint with flask application """
     app.register_blueprint(app_views)

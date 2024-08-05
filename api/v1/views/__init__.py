@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" A Blueprint to a Flask instance """ 
+""" A Blueprint to a Flask instance """
 
 from flask import Blueprint
 
