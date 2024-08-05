@@ -2,7 +2,7 @@
 
 """ Routing blueprint object to check app status """
 
-from flask import Flask
+from flask import Flask, jsonify
 from . import app_views
 
 

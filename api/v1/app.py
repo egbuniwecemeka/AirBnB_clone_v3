@@ -16,7 +16,7 @@ app.register_blueprint(app_views)
 @app.teardown_appcontext
 def teardown(exception):
     if exception:
-        print(f'An error occurred: {exception'}
+        print(f'An error occurred: {exception}')
     storage.close()
 
 
