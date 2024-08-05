@@ -28,4 +28,4 @@ def objs_num():
 
     num_objs = {name: storage.count(cls) for cls, name in zip(classes, names)}
 
-    `return jsonify(num_objs)
+    return jsonify(num_objs)
