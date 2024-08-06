@@ -5,14 +5,14 @@ from models.city import City
 from models.state import State
 from api.v1.views import app_views
 from models import storage
-from flask import abort
+from flask import abort, jsonify
 
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
-def get_cities():
+def get_cities(state_id):
     """ Retrieves list of all City objects """
-    state = storage(State, state_id)
+    state = storage.get(State, state_id)
     all_cities = []
     if not state:
         abort(404)
@@ -21,3 +21,15 @@ def get_cities():
         all_cities.append(city)
 
     return jsonify(all_cities.to_dict())
+
+
+@app_views.route('/cities/<city_id>', methods=['GET'],
+                 strict_slashes=False)
+def get_city(city_id):
+    """  Retrieves a City object  """
+
+    city = storage.get(City, city_id)
+    if not city:
+        abort(404)
+
+    return jsonify(city.to_dict())
