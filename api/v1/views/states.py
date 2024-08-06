@@ -4,7 +4,7 @@
 from api.v1.views import app_views
 from models.state import State
 from models import storage
-from flask import jsonify, request, make_response
+from flask import jsonify, request, make_response, abort
 
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
@@ -21,9 +21,9 @@ def states_obj():
     return jsonify(states_list)
 
 
-@app_views.route('/states/<int:states_id>', methods=['GET'],
+@app_views.route('/states/<state_id>', methods=['GET'],
                  strict_slashes=False)
-def state_obj(states_id):
+def state_obj(state_id):
     """ Retrieves a State object """
     state = storage.get(State, state_id)
     if not state:
