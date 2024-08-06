@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" view for state objects handling all RESTful APIs """
+""" view for state objects handling all default RESTful APIs """
 
 from api.v1.views import app_views
 from models.state import State
@@ -81,4 +81,4 @@ def update_state(state_id):
         if key not in ignore_keys:
             setattr(state, key, value)
     storage.save()
-    return (jsonify(state.to_dict()), 200)
+    return make_response(jsonify(state.to_dict()), 200)
