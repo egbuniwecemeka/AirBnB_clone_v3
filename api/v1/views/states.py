@@ -50,7 +50,7 @@ def post_state():
     """ Posts/creates a state  """
     if not request.get_json():
         abort(400, description="Not a JSON")
-        
+
     if 'name' not in request.get_json():
         abort(400, description="Missing name")
 
@@ -60,4 +60,3 @@ def post_state():
     new_state.save()
 
     return make_response(jsonify(new_state.to_dict()), 201)
-
