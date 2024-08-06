@@ -2,6 +2,7 @@
 """ view for state objects handling all RESTful APIs """
 
 from api.v1.views import app_views
+from models.state import State
 from models import storage
 from flask import jsonify, request, make_response
 
