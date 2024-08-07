@@ -5,7 +5,7 @@ from models.city import City
 from models.state import State
 from api.v1.views import app_views
 from models import storage
-from flask import abort, jsonify, make_response
+from flask import abort, jsonify, make_response, request
 
 
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
@@ -47,3 +47,25 @@ def delete_city(city_id):
     storage.save()
 
     return make_response(jsonify({}), 200)
+
+
+@app_views.route('/states/<state_id>/cities', methods=['POST'],
+                 strict_slashes=False)
+def post_city(state_id):
+    """ Creates a City in a specific  State """
+    state = storage.get(State, state_id)
+    if not state:
+        abort(404)
+    if not request.get_json():
+        abort(400, description="Not a JSON")
+    if 'name' not in request.get_json():
+        abort(400, description="Missing name")
+
+    data = request.get_json()
+
+    new_city = City(**data)
+
+    new_city.state_id = state.id
+    new_city.save()
+
+    return make_response(jsonify(new_city.to_dict()), 201)
